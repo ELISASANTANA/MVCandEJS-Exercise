@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <%- include('../partials/head'); %>
+    <title>Nossos Funcionários</title>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <section class="conteudo">
+            <div>
+                <span class="col-12 text-start">Pesquise pelo nome do Funcionário</span>
+                <input class="my-2" type="text" id="myInput" onkeyup="pesquisarFunc()"
+                    placeholder="Nome do Funcionário">
+            </div>
+            <table border=1 id="tabela" class="table table-hover">
+                <thead>
+                    <th>Nome do Funcionário</th>
+                    <th>Endereço</th>
+                    <th>Email</th>
+                    <th>Salário</th>
+                    <th>Ações</th>
+                </thead>
+
+
+                <tbody id="tbody">
+                    <!-- resultado = array
+                    item = cada atributo do array -->
+                    <% resultado.forEach(item=>{ %>
+                    <tr>
+                        <td><%=item.nome %></td>
+                        <td><%=item.endereco %></td>
+                        <td><%=item.email %></td>
+                        <td><%=item.salario %></td>
+                        <td>
+                            <a href="/funcionarios/editarFuncionario/<%=item._id %>"><button
+                                    class='btn btn-primary'>Editar</button></a>
+                            <a href="/funcionarios/deletar/<%=item._id %>"><button
+                                    class='btn btn-danger'>Excluir</button></a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <%- include('../partials/footer'); %>
+
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
